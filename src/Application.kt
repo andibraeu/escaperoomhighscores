@@ -94,6 +94,10 @@ fun Application.module(testing: Boolean = false) {
                 body {
                     h1 { +"Escape Room High Scores" }
                     div {
+                        p { +"This is just a simple high score tracker for an escaoe game. You may belong to the happy ones that got it passed on." }
+                        p { +"Be excellent to each other, do not overwrite results from other teams." }
+                    }
+                    div {
                         table {
                             thead {
                                 tr {
@@ -217,7 +221,7 @@ fun Application.module(testing: Boolean = false) {
         get("/styles.css") {
             call.respondCss {
                 body {
-                    backgroundColor = Color.gray
+                    backgroundColor = Color.lightGray
                 }
                 p {
                     fontSize = 1.em
