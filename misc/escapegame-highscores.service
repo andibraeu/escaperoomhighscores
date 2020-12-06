@@ -1,0 +1,14 @@
+[Unit]
+Description=Escape Game Highscores
+
+[Service]
+ExecStart=/usr/bin/java -jar /opt/escapegamehighsores/highscores-1.0.0-all.jar
+StandardOutput=journal
+User=<user>
+Group=<group>
+WorkingDirectory=/opt/escapegamehighscores/
+Environment=PORT=8090
+Environment=DBURI=xyz
+
+[Install]
+WantedBy=multi-user.target
