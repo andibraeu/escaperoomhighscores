@@ -21,6 +21,6 @@ You can use the service file in misc to run this application via systemd on a se
 
 ### docker
 
-build docker image using `docker build  -t escaperoomhighscores .`
+build docker image using `./gradlew build docker`
 
-run local in foreground: `docker run -it -p 8090:8090 --rm escaperoomhighscores:latest`
+run local in foreground: `./gradlew build dockerRun`

@@ -71,13 +71,20 @@ fun Application.module(testing: Boolean = false) {
         .connect(databaseUri,databaseDriver)
     transaction { createMissingTablesAndColumns(TeamResultsObject) }
 
-    install(DefaultHeaders) {
-        header("X-Engine", "Ktor") // will send this header with each response
-    }
+    if (!testing) {
+        install(DefaultHeaders) {
+            header("X-Engine", "Ktor") // will send this header with each response
+        }
+        install(ContentNegotiation) {
+            jackson {
+                enable(SerializationFeature.INDENT_OUTPUT)
+            }
+        }
+        install(StatusPages) {
+            exception<MissingKotlinParameterException> { cause ->
+                call.respond(HttpStatusCode.BadRequest, cause.localizedMessage)
+            }
 
-    install(ContentNegotiation) {
-        jackson {
-            enable(SerializationFeature.INDENT_OUTPUT)
         }
     }
 
@@ -240,13 +247,6 @@ fun Application.module(testing: Boolean = false) {
 
         get("/teamResults") {
             call.respond(teamResultController.getAllTeamResults())
-        }
-
-        install(StatusPages) {
-             exception<MissingKotlinParameterException> { cause ->
-                call.respond(HttpStatusCode.BadRequest, cause.localizedMessage)
-            }
-
         }
 
     }
