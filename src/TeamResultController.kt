@@ -1,4 +1,3 @@
-import io.ktor.http.content.PartData
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
@@ -25,7 +24,7 @@ class TeamResultController {
     fun upsertTeamResults(teamResults: TeamResults) {
         transaction {
             if (TeamResultsObject.select { TeamResultsObject.teamName eq teamResults.teamName }.count() == 1) {
-                TeamResultsObject.update {
+                TeamResultsObject.update({ TeamResultsObject.teamName eq teamResults.teamName }) {
                     it[passedFirstLevel] = teamResults.passedFirstLevel
                     it[durationInMinutesFirstLevel] = teamResults.durationInMinutesFirstLevel
                     it[passedSecondLevel] = teamResults.passedSecondLevel
