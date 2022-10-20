@@ -68,7 +68,7 @@ dependencies {
     compile "ch.qos.logback:logback-classic:$logback_version"
     compile "io.ktor:ktor-server-core:$ktor_version"
     compile "io.ktor:ktor-html-builder:$ktor_version"
-    compile "org.jetbrains:kotlin-css-jvm:1.0.0-pre.129-kotlin-1.4.20"
+    compile "org.jetbrains:kotlin-css-jvm:1.0.0-pre.148-kotlin-1.4.30"
     compile "io.ktor:ktor-locations:$ktor_version"
     compile "io.ktor:ktor-server-host-common:$ktor_version"
     compile "io.ktor:ktor-jackson:$ktor_version"
