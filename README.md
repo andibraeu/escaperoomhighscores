@@ -1,3 +1,5 @@
+This project is not developed anymore
+
 Small Ktor test service to store results from an escape game.an
 
 ## Build
